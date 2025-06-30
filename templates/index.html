@@ -1,22 +1,27 @@
-<h1>Hello World!</h1>
+{% extends 'base.html' %}
 
-<p>This is my first webpage!!! {{ first_name }} Here is the first change</p>
+{% block content %}
+    <h1>Hello World!</h1>
 
-<p>{{ stuff | safe }}</p>
-<p>{{ stuff | striptags }}</p>
-<p>{{ favorite_pizza }}</p>
+    <p>This is my first webpage!!! {{ first_name }} Here is the first change</p>
 
-<h3>Favorite Pizza:</h3>
+    <p>{{ stuff | safe }}</p>
+    <p>{{ stuff | striptags }}</p>
+    <p>{{ favorite_pizza }}</p>
 
-{% for topping in favorite_pizza %}
-    {% if topping == 41 %}
-        {{ topping + 100 }}<br/>
-    {% else %}
+    <h3>Favorite Pizza:</h3>
+
+    {% for topping in favorite_pizza %}
+        {% if topping == 41 %}
+            {{ topping + 100 }}<br/>
+        {% else %}
+            {{ topping }}<br/>
+        {% endif %}
+            {{ "{} here".format(topping) }}<br/>
         {{ topping }}<br/>
-    {% endif %}
-        {{ "{} here".format(topping) }}<br/>
-    {{ topping }}<br/>
-{% endfor %}
+    {% endfor %}
 
-<br/>
-{{ favorite_pizza.0|reverse }}
+    <br/>
+    {{ favorite_pizza.0|reverse }}
+
+(% endblock %}
